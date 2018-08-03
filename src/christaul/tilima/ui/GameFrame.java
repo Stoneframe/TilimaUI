@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import christaul.tilima.Game;
-import christaul.tilima.inputs.KeyBoardPlayerInput;
 
 public class GameFrame
 	extends JFrame
