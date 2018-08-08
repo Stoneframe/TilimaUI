@@ -2,6 +2,7 @@ package christaul.tilima.ui;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
@@ -29,18 +30,29 @@ public class GameFrame
 		canvas.setMinimumSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
 		canvas.setFocusable(false);
 
-		KeyBoardPlayerInput input = new KeyBoardPlayerInput();
+		KeyBoardPlayerInput arrowsInput = new KeyBoardPlayerInput(
+				KeyEvent.VK_UP,
+				KeyEvent.VK_DOWN,
+				KeyEvent.VK_LEFT,
+				KeyEvent.VK_RIGHT);
+
+		KeyBoardPlayerInput wasdInput = new KeyBoardPlayerInput(
+				KeyEvent.VK_W,
+				KeyEvent.VK_S,
+				KeyEvent.VK_A,
+				KeyEvent.VK_D);
 
 		setSize(GAME_WIDTH, GAME_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		addKeyListener(input);
+		addKeyListener(arrowsInput);
+		addKeyListener(wasdInput);
 		add(canvas);
 		pack();
 
-		game = new Game(GAME_WIDTH, GAME_HEIGHT, input);
+		game = new Game(GAME_WIDTH, GAME_HEIGHT, arrowsInput, wasdInput);
 		game.start(canvas);
 	}
 

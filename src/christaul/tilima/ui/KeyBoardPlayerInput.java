@@ -12,6 +12,23 @@ public class KeyBoardPlayerInput
 {
 	private boolean[] keys = new boolean[256];
 
+	private int upKeyEvent;
+	private int downKeyEvent;
+	private int leftKeyEvent;
+	private int rightKeyEvent;
+
+	public KeyBoardPlayerInput(
+			int upKeyEvent,
+			int downKeyEvent,
+			int leftKeyEvent,
+			int rightKeyEvent)
+	{
+		this.upKeyEvent = upKeyEvent;
+		this.downKeyEvent = downKeyEvent;
+		this.leftKeyEvent = leftKeyEvent;
+		this.rightKeyEvent = rightKeyEvent;
+	}
+
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -32,19 +49,19 @@ public class KeyBoardPlayerInput
 	@Override
 	public void update()
 	{
-		if (keys[KeyEvent.VK_UP])
+		if (keys[upKeyEvent])
 		{
 			movement = UP;
 		}
-		else if (keys[KeyEvent.VK_DOWN])
+		else if (keys[downKeyEvent])
 		{
 			movement = DOWN;
 		}
-		else if (keys[KeyEvent.VK_LEFT])
+		else if (keys[leftKeyEvent])
 		{
 			movement = LEFT;
 		}
-		else if (keys[KeyEvent.VK_RIGHT])
+		else if (keys[rightKeyEvent])
 		{
 			movement = RIGHT;
 		}
