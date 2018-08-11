@@ -24,12 +24,6 @@ public class GameFrame
 	{
 		super("Tilima");
 
-		canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
-		canvas.setMaximumSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
-		canvas.setMinimumSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
-		canvas.setFocusable(false);
-
 		KeyBoardPlayerInput arrowsInput = new KeyBoardPlayerInput(
 				KeyEvent.VK_UP,
 				KeyEvent.VK_DOWN,
@@ -42,6 +36,13 @@ public class GameFrame
 				KeyEvent.VK_A,
 				KeyEvent.VK_D);
 
+		canvas = new Canvas();
+		canvas.setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
+		canvas.setMaximumSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
+		canvas.setMinimumSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
+		canvas.setFocusable(false);
+		canvas.addMouseListener(arrowsInput);
+
 		setSize(GAME_WIDTH, GAME_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -49,6 +50,7 @@ public class GameFrame
 		setVisible(true);
 		addKeyListener(arrowsInput);
 		addKeyListener(wasdInput);
+		addMouseListener(arrowsInput);
 		add(canvas);
 		pack();
 
