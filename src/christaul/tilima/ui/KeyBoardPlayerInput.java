@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import christaul.tilima.inputs.PlayerInput;
-import christaul.tilima.tiles.Tile;
 
 public class KeyBoardPlayerInput
 	extends PlayerInput
@@ -21,8 +20,8 @@ public class KeyBoardPlayerInput
 	private int leftKeyEvent;
 	private int rightKeyEvent;
 
-	private int mouseX = 1 * Tile.WIDTH;
-	private int mouseY = 2 * Tile.HEIGHT;
+	private int mouseX = -1;
+	private int mouseY = -1;
 
 	public KeyBoardPlayerInput(
 			int upKeyEvent,
@@ -108,12 +107,26 @@ public class KeyBoardPlayerInput
 	@Override
 	public int getMouseX()
 	{
-		return mouseX;
+		try
+		{
+			return mouseX;
+		}
+		finally
+		{
+			mouseX = -1;
+		}
 	}
 
 	@Override
 	public int getMouseY()
 	{
-		return mouseY;
+		try
+		{
+			return mouseY;
+		}
+		finally
+		{
+			mouseY = -1;
+		}
 	}
 }
